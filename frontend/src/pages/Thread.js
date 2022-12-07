@@ -10,7 +10,7 @@ const Thread = (props) => {
   const sendRequest = useHttp();
   const [posts, setPosts] = useState([]);
 
-  const URL = process.env.REACT_APP_BASE_URL;
+  const URL = process.env.REACT_APP_SERVER_URL;
 
   const processData = (data) => {
     setPosts(data);

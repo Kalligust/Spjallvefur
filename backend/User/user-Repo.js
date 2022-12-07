@@ -45,7 +45,7 @@ const createUser = async (req, res, next) => {
   try {
     hashedPassword = await bcrypt.hash(password, 12);
   } catch (err) {
-    const error = new HttpError("Could not create user. Try again later", 500);
+    const error = new HttpError("Something went wrong. Try again later", 500);
     return next(error);
   }
 
@@ -58,10 +58,7 @@ const createUser = async (req, res, next) => {
   try {
     result = await createdUser.save();
   } catch (err) {
-    const error = new HttpError(
-      "something went wrong. Could not save user",
-      500
-    );
+    const error = new HttpError("something went wrong. Try again later", 500);
     return next(error);
   }
 

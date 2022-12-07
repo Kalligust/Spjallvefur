@@ -25,8 +25,9 @@ app.use(userRouter);
 app.use(threadRouter);
 
 app.use((req, res, next) => {
+  console.log("routing error");
   console.log(req.url);
-  const error = new HttpError("Could not find this route.", 404);
+  const error = new HttpError(`Could not find this route. ${req.url}`, 404);
   throw error;
 });
 

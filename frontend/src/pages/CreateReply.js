@@ -14,7 +14,7 @@ const CreateReply = () => {
   const threadUrl = `/threads/${id}`;
   const authCtx = useContext(AuthContext);
 
-  const URL = process.env.REACT_APP_BASE_URL;
+  const URL = process.env.REACT_APP_SERVER_URL;
 
   //If user is not logged in redirect to signin page
   if (!authCtx.isLoggedIn) {

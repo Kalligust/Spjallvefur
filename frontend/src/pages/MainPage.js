@@ -11,7 +11,7 @@ const MainPage = () => {
   const [threads, setThreads] = useState([]);
   const authCtx = useContext(AuthContext);
 
-  const URL = process.env.REACT_APP_BASE_URL;
+  const URL = process.env.REACT_APP_SERVER_URL;
 
   useEffect(() => {
     sendRequest({ url: `${URL}/threads` }, processData);

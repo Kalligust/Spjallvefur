@@ -10,7 +10,7 @@ const SignUp = () => {
   const authCtx = useContext(AuthContext);
   const [sendRequest, isError, error] = useHttp();
 
-  const URL = process.env.REACT_APP_BASE_URL;
+  const URL = process.env.REACT_APP_SERVER_URL;
 
   const {
     input: typedName,

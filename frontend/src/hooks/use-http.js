@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 const useHttp = () => {
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState(null);
+
   const sendRequest = useCallback(async (requestObj, processData) => {
     let data;
     try {
@@ -12,13 +13,12 @@ const useHttp = () => {
         body: requestObj.body ? JSON.stringify(requestObj.body) : null,
       });
       if (!response.ok) {
+        setIsError(true);
+        setError({ message: response.message, status: response.status });
         throw new Error(`Error! ${response.status}`);
       }
       data = await response.json();
     } catch (error) {
-      // setIsError(true);
-      // setError(error);
-      
       console.error(error);
     }
     processData(data);

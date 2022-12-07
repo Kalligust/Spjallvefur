@@ -12,7 +12,7 @@ const CreateThread = () => {
   const [sendRequest, isError, error] = useHttp();
   const authCtx = useContext(AuthContext);
 
-  const URL = process.env.REACT_APP_BASE_URL;
+  const URL = process.env.REACT_APP_SERVER_URL;
 
   //If user is not logged in he gets redirected to log in page
   if (!authCtx.isLoggedIn) {

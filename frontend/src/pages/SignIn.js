@@ -10,7 +10,7 @@ const SignIn = () => {
   const [sendRequest, isError, error] = useHttp();
   const authCtx = useContext(AuthContext);
 
-  const URL = process.env.REACT_APP_BASE_URL;
+  const URL = process.env.REACT_APP_SERVER_URL;
 
   const {
     input: typedName,
@@ -29,6 +29,7 @@ const SignIn = () => {
   } = useInputValidation((i) => i !== "");
 
   const formatData = (data) => {
+    console.log(data);
     authCtx.login(data.username, data.userId, data.token);
   };
 
