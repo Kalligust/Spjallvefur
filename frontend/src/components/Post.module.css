@@ -1,0 +1,32 @@
+.post {
+  margin: 1rem auto 1rem auto;
+  width: 50%;
+  height: 100%;
+  /* border-left: 2px solid black;
+  border-right: 2px solid black; */
+}
+.main {
+  width: 100%;
+  display: flex;
+}
+
+.user-details {
+  width: 20%;
+  padding: 5px;
+  text-align: center;
+  border-right: 1px solid black;
+}
+
+.avatar {
+  border: 1px solid black;
+  padding: 2px;
+}
+
+.avatar img {
+  width: 100%;
+}
+
+.text {
+  padding: 0.5rem;
+  width: 80%;
+}
