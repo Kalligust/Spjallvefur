@@ -1,0 +1,43 @@
+.header {
+  background-color: rgb(100, 90, 150);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10%;
+  box-shadow: 1px 2px 5px rgb(10, 10, 10);
+  font-family: "Lora", serif;
+}
+
+.title {
+  font-family: "Lora", serif;
+  color: rgb(200, 200, 200);
+  text-shadow: 1px 1px 10px rgb(10, 10, 10);
+}
+
+.actions {
+  display: flex;
+}
+
+.faux-button {
+  width: 6rem;
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  font-size: medium;
+  font-family: "Lora", serif;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: rgb(200, 200, 200);
+  box-shadow: 1px 1px 10px rgb(10, 10, 10);
+  text-align: center;
+  color: black;
+}
+
+.faux-button:hover {
+  background-color: rgb(180, 180, 180);
+  cursor: pointer;
+}
+
+.title:hover {
+  cursor: pointer;
+}
