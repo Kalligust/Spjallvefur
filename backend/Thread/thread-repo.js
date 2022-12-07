@@ -4,10 +4,10 @@ const { v4: uuidv4 } = require("uuid");
 const HttpError = require("../models/http-error");
 const post = require("./models/post");
 const thread = require("./models/thread");
-
+const databaseKey = process.env.DATABASE_KEY;
 mongoose
   .connect(
-    "mongodb+srv://kalligust:jTH3tAbjnBZSC1yX@cluster0.rrkjwy9.mongodb.net/forum?retryWrites=true&w=majority"
+    `mongodb+srv://kalligust:${databaseKey}@cluster0.rrkjwy9.mongodb.net/forum?retryWrites=true&w=majority`
   )
   .then(() => {
     console.log("connected to database");

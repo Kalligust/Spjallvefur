@@ -9,9 +9,12 @@ const jwt = require("jsonwebtoken");
 const HttpError = require("../models/http-error");
 const user = require("./models/user");
 
+const databaseKey = process.env.DATABASE_KEY;
+const tokenKey = process.env.TOKEN_KEY;
+
 mongoose
   .connect(
-    "mongodb+srv://kalligust:jTH3tAbjnBZSC1yX@cluster0.rrkjwy9.mongodb.net/forum?retryWrites=true&w=majority"
+    `mongodb+srv://kalligust:${databaseKey}@cluster0.rrkjwy9.mongodb.net/forum?retryWrites=true&w=majority`
   )
   .then(() => {
     console.log("connected to database");
@@ -23,6 +26,7 @@ mongoose
 //Add new user to user database
 const createUser = async (req, res, next) => {
   const { username, password } = req.body;
+
   //Check if email is already registered
   let existingUser;
   try {
@@ -36,6 +40,7 @@ const createUser = async (req, res, next) => {
     return next(error);
   }
 
+  //Encrypt password for save storage in database
   let hashedPassword;
   try {
     hashedPassword = await bcrypt.hash(password, 12);
@@ -64,7 +69,7 @@ const createUser = async (req, res, next) => {
   try {
     token = jwt.sign(
       { userId: createdUser.id, username: createdUser.username },
-      "supersecretkey",
+      tokenKey,
       { expiresIn: "1h" }
     );
   } catch (err) {
@@ -107,14 +112,11 @@ const signIn = async (req, res, next) => {
     return next(error);
   }
 
-  console.log("login");
-  console.log(userLoggingIn.id);
-
   let token;
   try {
     token = jwt.sign(
       { userId: userLoggingIn.id, username: userLoggingIn.username },
-      "supersecretkey",
+      tokenKey,
       { expiresIn: "1h" }
     );
   } catch (err) {

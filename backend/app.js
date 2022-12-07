@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-// const cors = require("cors");
+require("dotenv").config();
 const userRouter = require("./User/user-Routes");
 const threadRouter = require("./Thread/thread-routes");
 const HttpError = require("./models/http-error");
@@ -10,10 +10,6 @@ const PORT = 5000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-// Tvær aðferðir til að deala við CORS
-// app.use(cors());
-// Eða...
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -46,7 +42,6 @@ app.use((error, req, res, next) => {
 
 app.listen(PORT, (err) => {
   if (err) {
-    console.log("hér er ég");
     console.error(err);
   }
   console.log(`localhost:${PORT}`);
