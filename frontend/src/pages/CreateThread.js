@@ -9,7 +9,7 @@ import classes from "./CreateThread.module.css";
 const CreateThread = () => {
   const textRef = useRef();
   const titleRef = useRef();
-  const [sendRequest, isError, error] = useHttp();
+  const sendRequest = useHttp();
   const authCtx = useContext(AuthContext);
 
   const URL = process.env.REACT_APP_SERVER_URL;
@@ -19,14 +19,12 @@ const CreateThread = () => {
     return <Redirect to={"/signin"} />;
   }
 
-  //VANTAR ALLT ERROR HANDLING
   const processData = (data) => {
-    console.log(isError);
-    if (isError) {
-      console.log(error);
-    }
-    console.log(`Thread with id  "${data.threadId}" created`);
+    const threadId = data.threadId;
+    return <Redirect to={`threads/${threadId}`} />;
   };
+
+  const errorHandler = () => {};
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -48,7 +46,8 @@ const CreateThread = () => {
           },
           body: body,
         },
-        processData
+        processData,
+        errorHandler
       );
     }
   };

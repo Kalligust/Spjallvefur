@@ -25,8 +25,6 @@ app.use(userRouter);
 app.use(threadRouter);
 
 app.use((req, res, next) => {
-  console.log("routing error");
-  console.log(req.url);
   const error = new HttpError(`Could not find this route. ${req.url}`, 404);
   throw error;
 });
@@ -35,8 +33,6 @@ app.use((error, req, res, next) => {
   if (res.headerSent) {
     return next(error);
   }
-  console.log("app.js error");
-  console.log(error.message);
   res.status(error.code || 500);
   res.json({ message: error.message || "An unknow error occured" });
 });

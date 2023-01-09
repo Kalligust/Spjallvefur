@@ -20,7 +20,7 @@ mongoose
     console.log("connected to database");
   })
   .catch(() => {
-    console.log("connection failed");
+    console.log("connection failed userrepo");
   });
 
 //Add new user to user database

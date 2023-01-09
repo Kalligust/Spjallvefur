@@ -1,5 +1,7 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { Redirect } from "react-router-dom";
 
+import ErrorScreen from "../components/LayOut/ErrorScreen";
 import useInputValidation from "../hooks/use-inputValidation";
 import useHttp from "../hooks/use-http";
 import { AuthContext } from "../context/auth-context";
@@ -7,7 +9,8 @@ import { AuthContext } from "../context/auth-context";
 import classes from "./SignUp.module.css";
 
 const SignIn = () => {
-  const [sendRequest, isError, error] = useHttp();
+  const sendRequest = useHttp();
+  const [error, setError] = useState(null);
   const authCtx = useContext(AuthContext);
 
   const URL = process.env.REACT_APP_SERVER_URL;
@@ -28,13 +31,22 @@ const SignIn = () => {
     inputClass: passwordInputClass,
   } = useInputValidation((i) => i !== "");
 
-  const formatData = (data) => {
-    console.log(data);
+  if (authCtx.isLoggedIn) {
+    return <Redirect to="/" />;
+  }
+
+  const processData = (data) => {
     authCtx.login(data.username, data.userId, data.token);
+  };
+
+  const errorHandler = (e) => {
+    console.log(e.message);
+    setError(e.message);
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
+
     if (!markNameAsInvalid && !markPasswordAsInvalid) {
       const body = {
         username: typedName,
@@ -49,13 +61,15 @@ const SignIn = () => {
           },
           body: body,
         },
-        formatData
+        processData,
+        errorHandler
       );
     }
   };
 
   return (
     <div className={classes["signup-wrapper"]}>
+      {!!error && <ErrorScreen message={error} />}
       <h1>Sign in</h1>
       <form className={classes["signup-form"]} onSubmit={submitHandler}>
         <div className={classes.input}>

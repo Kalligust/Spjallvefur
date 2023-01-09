@@ -10,10 +10,10 @@ mongoose
     `mongodb+srv://kalligust:${databaseKey}@cluster0.rrkjwy9.mongodb.net/forum?retryWrites=true&w=majority`
   )
   .then(() => {
-    console.log("connected to database");
+    console.log("connected to database thread");
   })
   .catch((e) => {
-    console.log("connection failed");
+    console.log("connection failed thread");
     console.log(e);
   });
 
@@ -64,7 +64,7 @@ const createThread = async (req, res, next) => {
     threadId: threadId,
     text: req.body.text,
     username: req.body.username,
-    userid: req.body.userId,
+    userId: req.body.userId,
     timePosted: Date.now(),
   });
 
@@ -90,7 +90,10 @@ const getThreads = async (req, res, next) => {
   try {
     threads = await thread.find();
   } catch (err) {
-    const error = new HttpError("something went wrong. Try again later", 500);
+    const error = new HttpError(
+      "something went wrong in borrnorr. Try again later",
+      500
+    );
     return next(error);
   }
   res.json(threads.map((t) => t.toObject({ getters: true })));
