@@ -8,7 +8,7 @@ import SignIn from "./pages/SignIn";
 import Thread from "./pages/Thread";
 import CreateReply from "./pages/CreateReply";
 import CreateThread from "./pages/CreateThread";
-import { AuthContext } from "./context/auth-context";
+import AuthContext from "./context/auth-context";
 
 function App() {
   const [token, setToken] = useState(null);

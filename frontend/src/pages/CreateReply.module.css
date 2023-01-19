@@ -1,3 +1,12 @@
+.wrapper {
+  width: 500px;
+  margin: 50px auto;
+}
+
+.Draftwrapper {
+  border: 1px solid black;
+}
+
 .wrap {
   width: 50%;
   margin: 5rem auto;
@@ -9,8 +18,19 @@
   border-radius: 3px;
 }
 
+.post {
+  height: 100%;
+  width: 100%;
+}
+
 textarea {
   width: 99%;
   height: 90%;
   border-radius: 3px;
+}
+
+.editorWrap {
+  height: 100%;
+  width: 100%;
+  background: purple;
 }

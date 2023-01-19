@@ -2,7 +2,7 @@ import React from "react";
 import { useRef, useContext } from "react";
 import { Redirect } from "react-router-dom";
 
-import { AuthContext } from "../context/auth-context";
+import AuthContext from "../context/auth-context";
 import useHttp from "../hooks/use-http";
 import classes from "./CreateThread.module.css";
 

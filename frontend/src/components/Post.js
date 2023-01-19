@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { AuthContext } from "../context/auth-context";
+import AuthContext from "../context/auth-context";
 import PostHeader from "./LayOut/PostHeader";
 import PostFooter from "./LayOut/PostFooter";
 

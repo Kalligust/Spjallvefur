@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import ErrorScreen from "../components/LayOut/ErrorScreen";
 import useInputValidation from "../hooks/use-inputValidation";
 import useHttp from "../hooks/use-http";
-import { AuthContext } from "../context/auth-context";
+import AuthContext from "../context/auth-context";
 
 import classes from "./SignUp.module.css";
 

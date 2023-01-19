@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { AuthContext } from "../../context/auth-context";
+import AuthContext from "../../context/auth-context";
 
 import classes from "./PostFooter.module.css";
 

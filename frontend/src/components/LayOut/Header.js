@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 
-import { AuthContext } from "../../context/auth-context";
+import AuthContext from "../../context/auth-context";
 
 import classes from "./Header.module.css";
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ErrorScreen from "../components/LayOut/ErrorScreen";
 
 import ThreadListItem from "../components/ThreadListItem";
-import { AuthContext } from "../context/auth-context";
+import AuthContext from "../context/auth-context";
 import useHttp from "../hooks/use-http";
 import classes from "./MainPage.module.css";
 
@@ -29,13 +29,11 @@ const MainPage = () => {
 
   //Method to process data returned in sendRequest method
   const processData = (data) => {
-    console.log(data);
     setThreads(data || []);
   };
 
   //Method to handle errors in sendrequest method
   const errorHandler = (errorMessage) => {
-    console.log(errorMessage);
     setError(errorMessage);
   };
 
