@@ -4,11 +4,9 @@ const { v4: uuidv4 } = require("uuid");
 const HttpError = require("../models/http-error");
 const post = require("./models/post");
 const thread = require("./models/thread");
-const databaseKey = process.env.DATABASE_KEY;
+const database = process.env.DATABASE;
 mongoose
-  .connect(
-    `mongodb+srv://kalligust:${databaseKey}@cluster0.rrkjwy9.mongodb.net/forum?retryWrites=true&w=majority`
-  )
+  .connect(database)
   .then(() => {
     console.log("connected to database thread");
   })

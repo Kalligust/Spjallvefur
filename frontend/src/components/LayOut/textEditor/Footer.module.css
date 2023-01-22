@@ -1,0 +1,35 @@
+.footerWrapper {
+  /* border: 1px double black; */
+  /* height: 10%; */
+  /* padding: 0.25rem; */
+  display: flex;
+  align-items: center;
+}
+
+/* .submitBtn {
+  margin: auto;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 1px 1px 2px rgb(76, 75, 75); */
+/* background-color: rgb(250, 255, 250); */
+/* color: rgb(200, 150, 10);
+  background-color: rgb(33, 37, 31);
+} */
+
+.submitBtn {
+  width: 6rem;
+  padding: 0.5rem 1rem;
+  margin: auto;
+  font-size: medium;
+  font-family: "Lora", serif;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: 1px 1px 2px rgb(76, 75, 75);
+  text-align: center;
+  /* background-color: rgb(200, 200, 200);
+  color: black; */
+  color: rgb(200, 150, 10);
+  background-color: rgb(33, 37, 31);
+}

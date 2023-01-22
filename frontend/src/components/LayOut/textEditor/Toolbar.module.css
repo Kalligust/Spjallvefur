@@ -1,0 +1,17 @@
+.toolbarWrapper {
+  box-sizing: border-box;
+  height: 10%;
+  display: flex;
+  /* border: 1px solid black; */
+  padding: 5px;
+  align-items: center;
+}
+
+.controls {
+  display: flex;
+  margin: 0.5rem;
+}
+
+.blockTypes {
+  display: flex;
+}

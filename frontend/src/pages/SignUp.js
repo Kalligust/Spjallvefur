@@ -90,7 +90,9 @@ const SignUp = () => {
             onBlur={passwordBlurHandler}
           ></input>
         </div>
-        <button type="submit">Submit</button>
+        <button className={classes["faux-button"]} type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );

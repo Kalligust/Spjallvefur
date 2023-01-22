@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header className={classes.header}>
       <Link to="/" style={{ textDecoration: "none" }}>
-        <h1 className={classes.title}>ForumProject</h1>
+        <h1 className={classes.title}>Forum Project</h1>
       </Link>
       <div className={classes.actions}>
         {!authCtx.isLoggedIn && (

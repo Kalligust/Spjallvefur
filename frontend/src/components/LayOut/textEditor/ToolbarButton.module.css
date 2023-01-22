@@ -1,0 +1,31 @@
+.wrapper {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 0.12rem;
+  height: content;
+  width: content;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 2px rgb(76, 75, 75);
+  /* background-color: rgb(250, 255, 250); */
+  color: rgb(200, 150, 10);
+  background-color: rgb(33, 37, 31);
+}
+
+.wrapper-active {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 0.12rem;
+  height: content;
+  width: content;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 2px grey;
+  background-color: rgb(175, 179, 181);
+}
+
+.wrapper svg {
+  align-items: center;
+  margin: auto;
+  height: 100%;
+}
