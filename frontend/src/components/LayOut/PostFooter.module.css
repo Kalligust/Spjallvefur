@@ -1,7 +1,28 @@
 .postfooter {
-  background-color: rgb(100, 90, 150);
+  background-color: rgb(200, 150, 10);
   height: 2.5rem;
   width: 100%;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.faux-button {
+  margin: 1rem;
+  width: 4rem;
+  padding: 0.25rem 0.5rem;
+  margin-left: 1rem;
+  font-size: 1rem;
+  font-family: "Lora", serif;
+  font-weight: 600;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 1px 2px rgb(76, 75, 75);
+  text-align: center;
+  /* background-color: rgb(200, 200, 200);
+  color: black; */
+  color: rgb(200, 150, 10);
+  background-color: rgb(33, 37, 31);
 }

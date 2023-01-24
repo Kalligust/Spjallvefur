@@ -1,7 +1,7 @@
 .postheader {
-  background-color: rgb(100, 90, 150);
+  background-color: rgb(200, 150, 10);
   height: 2.5rem;
   width: 100%;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }

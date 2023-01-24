@@ -40,7 +40,7 @@ input {
   background-color: rgb(255, 145, 145);
 }
 
-label {
+.signup-wrapper label {
   font-family: "Lora", serif;
   font-weight: 600;
   color: rgb(200, 150, 10);

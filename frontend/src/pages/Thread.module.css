@@ -1,3 +1,6 @@
-/* .thread {
-  height: 100%;
-} */
+.thread {
+  margin: 3rem auto;
+  border-right: yellow;
+  border-left: yellow;
+  width: 80%;
+}

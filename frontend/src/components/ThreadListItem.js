@@ -10,7 +10,7 @@ const ThreadListItem = (props) => {
         <h2 className={classes.title}>{props.title}</h2>
       </Link>
       <div className={classes.details}>
-        <p className={classes.date}>01/12/2022</p>
+        <p className={classes.date}>{props.lastActivity}</p>
       </div>
     </div>
   );

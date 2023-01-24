@@ -12,7 +12,14 @@ const PostFooter = (props) => {
       {/* Only show reply button if user is logged in */}
       {authCtx.isLoggedIn && (
         <Link to={`/createreply/${props.threadId}`}>
-          <button>Reply</button>
+          <button className={classes["faux-button"]}>Reply</button>
+        </Link>
+      )}
+      {authCtx.username === props.username && (
+        <Link
+          to={`/editpost?postId=${props.postId}&threadId=${props.threadId}`}
+        >
+          <button className={classes["faux-button"]}>Edit</button>
         </Link>
       )}
     </div>

@@ -7,6 +7,7 @@ const useHttp = () => {
   const sendRequest = useCallback(
     async (requestObj, processData, errorHandler) => {
       let data;
+      console.log("senRequest");
       try {
         const response = await fetch(requestObj.url, {
           method: requestObj.method ? requestObj.method : "GET",

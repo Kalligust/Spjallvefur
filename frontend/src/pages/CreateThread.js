@@ -19,7 +19,6 @@ const CreateThread = () => {
 
   const processData = (data) => {
     const threadId = data.threadId;
-    return <Redirect to={`threads/${threadId}`} />;
   };
 
   const errorHandler = () => {};

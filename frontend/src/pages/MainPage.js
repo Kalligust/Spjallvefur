@@ -29,6 +29,7 @@ const MainPage = () => {
 
   //Method to process data returned in sendRequest method
   const processData = (data) => {
+    console.log(typeof data.timePosted);
     setThreads(data || []);
   };
 
@@ -52,7 +53,8 @@ const MainPage = () => {
               key={thread.id}
               id={thread.threadId}
               title={thread.threadTitle}
-              date={thread.date}
+              date={thread.timePosted}
+              lastActivity={thread.lastActivity}
             />
           ))}
         </ul>

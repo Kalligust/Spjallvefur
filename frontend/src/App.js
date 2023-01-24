@@ -8,6 +8,7 @@ import SignIn from "./pages/SignIn";
 import Thread from "./pages/Thread";
 import CreateReply from "./pages/CreateReply";
 import CreateThread from "./pages/CreateThread";
+import EditPost from "./pages/EditPost";
 import AuthContext from "./context/auth-context";
 
 function App() {
@@ -60,6 +61,9 @@ function App() {
             </Route>
             <Route path="/createthread" exact>
               <CreateThread />
+            </Route>
+            <Route path="/editPost" exact>
+              <EditPost />
             </Route>
           </Switch>
         </main>

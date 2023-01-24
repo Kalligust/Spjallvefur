@@ -9,7 +9,9 @@ const router = express.Router();
 
 router.post("/createThread", threadRepo.createThread);
 router.get("/threads", threadRepo.getThreads);
-router.get("/threads/:id", threadRepo.getPosts);
+router.get("/threads/:id", threadRepo.getPostsFromThreadId);
+router.post("/editPost", threadRepo.editPost);
+router.get("/getPostFromId", threadRepo.getPostFromId);
 router.post("/createreply/:id", threadRepo.createReply);
 // router.use(checkAuth);
 
