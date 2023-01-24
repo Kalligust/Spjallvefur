@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useContext, useEffect } from "react";
-import { useParams, Redirect, useLocation } from "react-router-dom";
+import { Redirect, useLocation } from "react-router-dom";
 
 import ErrorScreen from "../components/LayOut/ErrorScreen";
 import AuthContext from "../context/auth-context";

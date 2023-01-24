@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  margin: 2rem 2rem;
+  font-family: "Lora", serif;
+}
+
+.sidebar {
+  width: 20%;
+  background-color: blue;
+  margin-right: 2rem;
+}
+
+.sidebar h2 {
+  margin: auto;
+  padding: 0.5rem;
+}
+
+.avatar {
+  width: 100%;
+  padding: 1rem;
+}
+
+.userInfo {
+  margin-top: 3rem;
+  width: 40%;
+  background-color: aquamarine;
+}
+
+.userInfo table {
+  background-color: aliceblue;
+  width: 100%;
+  font-size: 1.5rem;
+  /* font-family: "Lora", serif; */
+  margin: 0;
+}

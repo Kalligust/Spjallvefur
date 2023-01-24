@@ -9,6 +9,7 @@ const router = express.Router();
 
 router.post("/signup", userRepo.createUser);
 router.post("/signin", userRepo.signIn);
+router.get("/getUserByUsername", userRepo.getUserByUsername);
 // router.use(checkAuth);
 
 module.exports = router;

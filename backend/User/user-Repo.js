@@ -128,5 +128,24 @@ const signIn = async (req, res, next) => {
   });
 };
 
+const getUserByUsername = async (req, res, next) => {
+  const { username } = req.query;
+
+  let response;
+  try {
+    response = await user.findOne({ username: username });
+  } catch (err) {
+    console.log(err);
+    const error = new HttpError(
+      "Could not retrieve user. Try again later",
+      500
+    );
+    return next(error);
+  }
+
+  res.json(response);
+};
+
 exports.createUser = createUser;
 exports.signIn = signIn;
+exports.getUserByUsername = getUserByUsername;

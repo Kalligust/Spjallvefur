@@ -29,6 +29,14 @@ const Header = () => {
             Log Out
           </div>
         )}
+        {authCtx.isLoggedIn && (
+          <Link
+            to={`/userprofile?username=${authCtx.username}`}
+            style={{ textDecoration: "none" }}
+          >
+            <div className={classes["faux-button"]}>Profile</div>
+          </Link>
+        )}
       </div>
     </header>
   );
