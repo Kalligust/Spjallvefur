@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Redirect, useLocation } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, Redirect, useLocation } from "react-router-dom";
 
 import useHttp from "../hooks/use-http";
+import AuthContext from "../context/auth-context";
 
 import classes from "./UserProfile.module.css";
 
+//BRÁÐABIRGÐAMYND EYÐA
 const avatar =
   "https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg";
 
@@ -13,6 +15,7 @@ const UserProfile = () => {
   const [fetching, setFetching] = useState(true);
   const [user, setUser] = useState();
   const [error, setError] = useState();
+  const authCtx = useContext(AuthContext);
 
   const URL = process.env.REACT_APP_SERVER_URL;
   const location = useLocation().search;
@@ -74,8 +77,16 @@ const UserProfile = () => {
           <h2>About me</h2>
           <p className={classes.description}>
             bææalbla,blabla,basdkgsobnlsjdfbnadfkjgnadfkk nfkadgn kadfvka jadfn
-            lkdfj kldf kdjfj lakdfjbvlkdf j
+            lkdfj kldf kdjfj lakdfjbvlkdf j. gergg gf . gdfgdf gdfg .dfg adg
           </p>
+        </div>
+        <div className={classes["edit-section"]}>
+          <Link
+            to={`/editUserInformation?username=${username}`}
+            style={{ textDecoration: "none" }}
+          >
+            <div className={classes["faux-button"]}>Edit information</div>
+          </Link>
         </div>
       </div>
     </div>
