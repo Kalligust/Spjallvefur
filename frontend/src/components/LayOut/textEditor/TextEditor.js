@@ -1,15 +1,10 @@
 import { useState, useRef, useEffect } from "react";
-import {
-  Editor,
-  EditorState,
-  RichUtils,
-  convertToRaw,
-  convertFromRaw,
-} from "draft-js";
+import { Editor, EditorState, RichUtils, convertToRaw } from "draft-js";
 
 import Footer from "./Footer";
 import Toolbar from "./Toolbar";
 import myBlockStyleFn from "./myBlockStyleFn";
+import { contentStringToEditorState } from "./textEditor-utils";
 
 import classes from "./TextEditor.module.css";
 import "./myBlockStyleFn.css";
@@ -19,13 +14,8 @@ const TextEditor = (props) => {
   const titleRef = useRef("");
 
   useEffect(() => {
-    console.log(props.contentString);
     if (props.editMode && props.contentString !== "") {
-      console.log(props.contentString);
-      const rawContentState = JSON.parse(props.contentString);
-      console.log(rawContentState);
-      const contentState = convertFromRaw(rawContentState);
-      const placeHolder = EditorState.createWithContent(contentState);
+      const placeHolder = contentStringToEditorState(props.contentString);
       setEditorState(placeHolder);
     }
   }, []);

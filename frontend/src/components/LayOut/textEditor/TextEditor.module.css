@@ -1,8 +1,10 @@
 .daddy-wrapper {
   /* position: relative;
   top: 25vh; */
-  height: 70vh;
-  width: 100vh;
+  /* height: 50vh;
+  width: 100vh; */
+  height: 30rem;
+  width: 50rem;
   margin: 4rem auto;
   /* background-color: rgb(100, 90, 150); */
   background-color: rgb(200, 150, 10);

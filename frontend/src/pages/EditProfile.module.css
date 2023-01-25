@@ -1,0 +1,96 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  margin: 2rem 2rem;
+  font-family: "Lora", serif;
+}
+
+.sidebar {
+  width: 20%;
+  background-color: white;
+  margin-right: 2rem;
+  text-align: center;
+}
+
+.sidebar h2 {
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.sidebar h2::first-letter {
+  text-transform: capitalize;
+}
+
+.avatar-wrapper {
+  position: relative;
+}
+
+.avatar {
+  width: 100%;
+  /* padding: 1rem; */
+}
+
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  z-index: 9;
+  background-color: rgba(100, 100, 100, 0);
+  color: rgba(0, 0, 0, 0);
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+.overlay:hover {
+  background-color: rgba(100, 100, 100, 0.8);
+  color: rgba(0, 0, 0, 1);
+  cursor: pointer;
+}
+
+.userInfo {
+  /* margin-top: 3rem; */
+  width: 40%;
+  background-color: aquamarine;
+  padding: 1rem;
+}
+
+.faux-button {
+  width: 9rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-family: "Lora", serif;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: 1px 1px 2px rgb(76, 75, 75);
+  text-align: center;
+  color: rgb(200, 150, 10);
+  background-color: rgb(33, 37, 31);
+}
+
+.faux-button:hover {
+  background-color: rgb(53, 57, 51);
+  cursor: pointer;
+}
+
+.input-wrapper {
+  width: 100%;
+  margin: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-wrapper label {
+  width: 30%;
+}
+
+.input-wrapper input {
+  width: 70%;
+  padding: 0.5rem;
+  border-radius: 5px;
+}

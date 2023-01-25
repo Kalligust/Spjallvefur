@@ -3,6 +3,7 @@ import { Link, Redirect, useLocation } from "react-router-dom";
 
 import useHttp from "../hooks/use-http";
 import AuthContext from "../context/auth-context";
+import EditProfile from "./EditProfile";
 
 import classes from "./UserProfile.module.css";
 
@@ -15,6 +16,7 @@ const UserProfile = () => {
   const [fetching, setFetching] = useState(true);
   const [user, setUser] = useState();
   const [error, setError] = useState();
+  const [editMode, setEditMode] = useState(false);
   const authCtx = useContext(AuthContext);
 
   const URL = process.env.REACT_APP_SERVER_URL;
@@ -40,12 +42,20 @@ const UserProfile = () => {
     setError(err);
   };
 
+  const switchToEditMode = () => {
+    setEditMode(true);
+  };
+
   if (fetching) {
     return (
       <div>
         <h1>Loading</h1>
       </div>
     );
+  }
+
+  if (editMode) {
+    return <EditProfile user={user} />;
   }
 
   return (
@@ -81,12 +91,15 @@ const UserProfile = () => {
           </p>
         </div>
         <div className={classes["edit-section"]}>
-          <Link
-            to={`/editUserInformation?username=${username}`}
+          <div className={classes["faux-button"]} onClick={switchToEditMode}>
+            Edit information
+          </div>
+          {/* <Link
+            to={`/editprofile?username=${username}`}
             style={{ textDecoration: "none" }}
           >
             <div className={classes["faux-button"]}>Edit information</div>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

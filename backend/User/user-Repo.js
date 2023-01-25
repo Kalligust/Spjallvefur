@@ -146,6 +146,11 @@ const getUserByUsername = async (req, res, next) => {
   res.json(response);
 };
 
+const editUser = async (req, res, next) => {
+  console.log(req.body);
+};
+
 exports.createUser = createUser;
 exports.signIn = signIn;
 exports.getUserByUsername = getUserByUsername;
+exports.editUser = editUser;

@@ -10,6 +10,7 @@ import CreateReply from "./pages/CreateReply";
 import CreateThread from "./pages/CreateThread";
 import EditPost from "./pages/EditPost";
 import UserProfile from "./pages/UserProfile";
+import EditProfile from "./pages/EditProfile";
 import AuthContext from "./context/auth-context";
 
 function App() {
@@ -68,6 +69,9 @@ function App() {
             </Route>
             <Route path="/userprofile" exact>
               <UserProfile />
+            </Route>
+            <Route path="/editprofile" exact>
+              <EditProfile />
             </Route>
           </Switch>
         </main>
