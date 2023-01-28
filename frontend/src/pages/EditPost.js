@@ -39,8 +39,6 @@ const EditPost = () => {
   }
 
   const onSuccessfullGet = (data) => {
-    console.log("onget");
-    console.log(data.text);
     setPost(data.text);
   };
 

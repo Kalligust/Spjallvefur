@@ -1,16 +1,13 @@
 const express = require("express");
 // const { MongoClient } = require("mongodb");
 
-const userRepo = require("./user-Repo");
+const imageRepo = require("./image-Repo");
 // const HttpError = require("../models/http-error");
 const checkAuth = require("../middleware/check-auth");
 
 const router = express.Router();
 
-router.post("/signup", userRepo.createUser);
-router.post("/signin", userRepo.signIn);
-router.get("/getUserByUsername", userRepo.getUserByUsername);
-router.post("/editUser", userRepo.editUser);
+router.post("/uploadImage", imageRepo.uploadImage);
 // router.use(checkAuth);
 
 module.exports = router;

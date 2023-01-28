@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 const userRouter = require("./User/user-Routes");
 const threadRouter = require("./Thread/thread-routes");
+const imageRouter = require("./ImageUpload/image-Routes");
 const HttpError = require("./models/http-error");
 
 const app = express();
@@ -18,11 +19,13 @@ app.use((req, res, next) => {
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+  console.log(res.getHeaders());
   next();
 });
 
 app.use(userRouter);
 app.use(threadRouter);
+app.use(imageRouter);
 
 app.use((req, res, next) => {
   const error = new HttpError(`Could not find this route. ${req.url}`, 404);
@@ -30,6 +33,8 @@ app.use((req, res, next) => {
 });
 
 app.use((error, req, res, next) => {
+  console.log("Ble");
+  console.log(error);
   if (res.headerSent) {
     return next(error);
   }

@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useState, useRef } from "react";
 import { Link, Redirect, useLocation } from "react-router-dom";
 
+import ImageUpload from "../components/ImageUpload";
 import useHttp from "../hooks/use-http";
 import AuthContext from "../context/auth-context";
 
@@ -10,33 +11,25 @@ import classes from "./EditProfile.module.css";
 const avatar =
   "https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg";
 
-const EditProfile = () => {
+const EditProfile = (props) => {
   const sendRequest = useHttp();
-  const [fetching, setFetching] = useState(true);
-  const [user, setUser] = useState();
-  const [error, setError] = useState();
   const [isChangingAvatar, setIsChangingAvatar] = useState(false);
   const [newAvatar, setNewAvatar] = useState(null);
-  const { nameRef, birthdayRef, locationRef, occupationRef, aboutRef } =
-    useRef("");
+  const [error, setError] = useState(null);
   const authCtx = useContext(AuthContext);
+  const avatarSelectorRef = useRef();
+  const nameRef = useRef(props.username);
+  const birthdayRef = useRef();
+  const locationRef = useRef(props.location);
+  const occupationRef = useRef(props.occupation);
+  const aboutRef = useRef(props.about);
 
   const URL = process.env.REACT_APP_SERVER_URL;
-  const location = useLocation().search;
-  const username = new URLSearchParams(location).get("username");
+  // const location = useLocation().search;
+  // const username = new URLSearchParams(location).get("username");
+  // };
 
-  useEffect(() => {
-    sendRequest(
-      { url: `${URL}/getUserByUsername?username=${username}` },
-      onSuccessfullGet,
-      errorHandler
-    );
-  }, []);
-
-  const onSuccessfullGet = (data) => {
-    setUser(data);
-    setFetching(false);
-  };
+  console.log(props.username);
 
   const onSuccessFullPost = (data) => {
     console.log(data);
@@ -50,12 +43,12 @@ const EditProfile = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     console.log(nameRef.current);
-    const formData = new FormData();
-    formData.append("avatar", avatar);
-    formData.append("username", nameRef.current);
-    formData.append("birthday", birthdayRef.current);
-    formData.append("location", locationRef.current);
-    formData.append("about", aboutRef.current);
+    // const formData = new FormData();
+    // formData.append("avatar", avatar);
+    // formData.append("username", nameRef.current);
+    // formData.append("birthday", birthdayRef.current);
+    // formData.append("location", locationRef.current);
+    // formData.append("about", aboutRef.current);
     const body = {
       username: nameRef,
       birthday: birthdayRef,
@@ -80,11 +73,29 @@ const EditProfile = () => {
   };
 
   const changeAvatarHandler = () => {
-    setIsChangingAvatar(true);
+    avatarSelectorRef.current.click();
+  };
+
+  const onSuccessFullImageUpload = (data) => {
+    console.log(data);
   };
 
   const onSelectFile = (event) => {
-    setNewAvatar(event.target.files[0]);
+    const image = event.target.files[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    sendRequest(
+      {
+        url: `${URL}/uploadImage`,
+        method: "POST",
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        body: image,
+      },
+      onSuccessFullImageUpload,
+      errorHandler
+    );
   };
 
   // const avatarUploadHandler = () => {
@@ -92,18 +103,10 @@ const EditProfile = () => {
   //   formData.append("new avatar", newAvatar);
   // };
 
-  if (fetching) {
-    return (
-      <div>
-        <h1>Loading</h1>
-      </div>
-    );
-  }
-
   return (
     <div className={classes.wrapper}>
       <div className={classes.sidebar}>
-        <h2>{user.username}</h2>
+        <h2>{props.username}</h2>
         <div
           className={classes["avatar-wrapper"]}
           onClick={changeAvatarHandler}
@@ -112,28 +115,26 @@ const EditProfile = () => {
           <div className={classes.overlay}>
             <p>Change avatar</p>
           </div>
+          <ImageUpload ref={avatarSelectorRef} onChange={onSelectFile} />
+          {/* <input
+            type="file"
+            accept="image/jpeg, image/png, image/jpg"
+            onChange={onSelectFile}
+            style={{ display: "none" }}
+            ref={avatarSelectorRef}
+          /> */}
         </div>
-        {isChangingAvatar && (
-          <div className={classes["img-upload"]}>
-            <input
-              type="file"
-              accept="image/jpeg, image/png, image/jpg"
-              onChange={onSelectFile}
-            ></input>
-            {/* <div
-              className={classes["faux-button"]}
-              onClick={avatarUploadHandler}
-            >
-              Upload image
-            </div> */}
-          </div>
-        )}
       </div>
       <div className={classes.userInfo}>
         <form onSubmit={submitHandler}>
           <div className={classes["input-wrapper"]}>
             <label htmlFor="username">Username</label>
-            <input type="text" id="username" ref={nameRef} />
+            <input
+              type="text"
+              id="username"
+              ref={nameRef}
+              placeholder={props.username}
+            />
           </div>
           <div className={classes["input-wrapper"]}>
             <label htmlFor="birthday">Birthday</label>
@@ -141,18 +142,33 @@ const EditProfile = () => {
           </div>
           <div className={classes["input-wrapper"]}>
             <label htmlFor="location">Location</label>
-            <input type="text" id="location" ref={locationRef} />
+            <input
+              type="text"
+              id="location"
+              ref={locationRef}
+              placeholder={props.location}
+            />
           </div>
           <div className={classes["input-wrapper"]}>
             <label htmlFor="occupation">Occupation</label>
-            <input type="text" id="occupation" ref={occupationRef} />
+            <input
+              type="text"
+              id="occupation"
+              ref={occupationRef}
+              placeholder={props.occupation}
+            />
           </div>
           <div className={classes.about}>
             <label htmlFor="about">About</label>
-            <input type="textarea" id="about" ref={aboutRef} />
+            <input
+              type="textarea"
+              id="about"
+              ref={aboutRef}
+              placeholder={props.about}
+            />
           </div>
           <button type="submit" className={classes["faux-button"]}>
-            Edit information
+            Submit Changes
           </button>
         </form>
 

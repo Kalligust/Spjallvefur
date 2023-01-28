@@ -33,7 +33,16 @@ const UserProfile = () => {
 
   const onSuccessfullGet = (data) => {
     console.log(data);
-    setUser(data);
+    const userData = {
+      username: data.username,
+      age: data.age || "",
+      location: data.location || "",
+      occupation: data.occupation || "",
+      about: data.about || "",
+      avatarImageUrl: data.avatarImageUrl || "",
+    };
+    console.log(userData);
+    setUser(userData);
     setFetching(false);
   };
 
@@ -55,7 +64,15 @@ const UserProfile = () => {
   }
 
   if (editMode) {
-    return <EditProfile user={user} />;
+    return (
+      <EditProfile
+        username={user.username}
+        age={user.age}
+        location={user.location}
+        occupation={user.location}
+        about={user.about}
+      />
+    );
   }
 
   return (

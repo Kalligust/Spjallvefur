@@ -7,20 +7,23 @@ const useHttp = () => {
   const sendRequest = useCallback(
     async (requestObj, processData, errorHandler) => {
       let data;
-      console.log("senRequest");
+      console.log(requestObj.body);
       try {
         const response = await fetch(requestObj.url, {
           method: requestObj.method ? requestObj.method : "GET",
           headers: requestObj.headers ? requestObj.headers : {},
           body: requestObj.body ? JSON.stringify(requestObj.body) : null,
+          // body: requestObj.body ? requestObj.body : null,
         });
         data = await response.json();
         if (!response.ok) {
           console.log("hér núna");
           throw new Error(`${data.message}`);
         }
+        console.log(typeof data);
         processData(data);
       } catch (error) {
+        console.log(error);
         errorHandler(error);
       }
     },

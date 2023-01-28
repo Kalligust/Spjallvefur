@@ -45,6 +45,20 @@
 }
 
 .textSection {
+  height: 75%;
+  background-color: rgb(242, 242, 192);
+  margin: 0 1rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  overflow: auto;
+  color: rgb(33, 37, 31);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  box-shadow: 1px 1px 2px black;
+  border-radius: 5px;
+}
+
+.textSection-edit {
   height: 60%;
   background-color: rgb(242, 242, 192);
   margin: 0 1rem;

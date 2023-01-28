@@ -13,6 +13,10 @@ const TextEditor = (props) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const titleRef = useRef("");
 
+  const textSectionClass = props.originalPost
+    ? "textSection-edit"
+    : "textSection";
+
   useEffect(() => {
     if (props.editMode && props.contentString !== "") {
       const placeHolder = contentStringToEditorState(props.contentString);
@@ -79,7 +83,7 @@ const TextEditor = (props) => {
               />
             </div>
           )}
-          <div className={classes["textSection"]} onClick={focus}>
+          <div className={classes[`${textSectionClass}`]} onClick={focus}>
             <Editor
               editorState={editorState}
               onChange={onEditorStateChange}
