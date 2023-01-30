@@ -13,10 +13,10 @@ const avatar =
 
 const UserProfile = () => {
   const sendRequest = useHttp();
-  const [fetching, setFetching] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState();
   const [error, setError] = useState();
-  const [editMode, setEditMode] = useState(false);
+  const [editModeIsOn, setEditModeIsOn] = useState(false);
   const authCtx = useContext(AuthContext);
 
   const URL = process.env.REACT_APP_SERVER_URL;
@@ -43,7 +43,7 @@ const UserProfile = () => {
     };
     console.log(userData);
     setUser(userData);
-    setFetching(false);
+    setLoading(false);
   };
 
   const errorHandler = (err) => {
@@ -52,10 +52,10 @@ const UserProfile = () => {
   };
 
   const switchToEditMode = () => {
-    setEditMode(true);
+    setEditModeIsOn(true);
   };
 
-  if (fetching) {
+  if (loading) {
     return (
       <div>
         <h1>Loading</h1>
@@ -63,7 +63,7 @@ const UserProfile = () => {
     );
   }
 
-  if (editMode) {
+  if (editModeIsOn) {
     return (
       <EditProfile
         username={user.username}

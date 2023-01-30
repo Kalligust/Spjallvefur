@@ -1,13 +1,7 @@
 import React, { useImperativeHandle, useRef } from "react";
 
-const ImageUpload = React.forwardRef((props, ref) => {
+const ImageUpload = (props) => {
   const imageRef = useRef();
-
-  useImperativeHandle(ref, () => {
-    return {
-      imageRef: imageRef,
-    };
-  });
 
   return (
     <input
@@ -15,9 +9,8 @@ const ImageUpload = React.forwardRef((props, ref) => {
       accept="image/jpeg, image/png, image/jpg"
       onChange={props.onSelectFile}
       style={{ display: "none" }}
-      ref={imageRef}
     />
   );
-});
+};
 
 export default ImageUpload;
