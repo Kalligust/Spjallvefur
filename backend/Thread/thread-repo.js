@@ -114,6 +114,7 @@ const createThread = async (req, res, next) => {
 };
 
 const getThreads = async (req, res, next) => {
+  console.log("getthreads");
   let threads;
   try {
     threads = await thread.find().sort({ lastActivity: -1 });
